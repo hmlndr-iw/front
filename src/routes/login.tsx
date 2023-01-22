@@ -9,15 +9,12 @@ import ShowError from '~/core/ShowError'
 export default function Login() {
   const { error, isLoading, mutate } = useLogin()
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const data = new FormData(e.currentTarget)
-    const values = Object.fromEntries(data.entries())
+    const data = new FormData(e.currentTarget);
+    const values = Object.fromEntries(data.entries());
 
-    mutate({
-      ...values,
-      userName: values.email,
-    })
+    mutate(values);
   }
 
   return (
@@ -32,8 +29,8 @@ export default function Login() {
               <h1 className="font-semibold text-xl">Login</h1>
               <Input
                 type="text"
-                label="Email / Username"
-                name="email"
+                label="Username"
+                name="username"
                 required
                 suffix={<EmailIcon className="text-primary-600" />}
               />
@@ -75,5 +72,5 @@ export default function Login() {
         </Container>
       </div>
     </div>
-  )
+  );
 }

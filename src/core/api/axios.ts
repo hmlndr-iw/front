@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const getApi = (contenType: string = 'application/json') =>
+export const getApi = (contenType: string = "application/json") =>
   axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: "http://localhost:9000",
     headers: {
-      'Content-Type': contenType,
-      authorization: 'Bearer ' + localStorage.getItem('token'),
+      "Content-Type": contenType,
+      authorization: "Bearer " + localStorage.getItem("token"),
     },
-  })
+  });

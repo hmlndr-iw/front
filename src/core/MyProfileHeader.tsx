@@ -3,18 +3,19 @@ import { useGetMe } from './api/users/context'
 import ProfileHeader from './ProfileHeader'
 
 export default function MyProfileHeader() {
-  const { data } = useGetMe()
-  const count = useCountMySponsors()
+  const { data } = useGetMe();
+  const count = 40; // useCountMySponsors()
+
   return (
     <ProfileHeader
       role={data.role}
-      profilePicture={data.profilePicture}
+      profilePicture={data.image}
       coverPicture={data.coverPicture}
-      name={data.fullname}
-      title={"@"+data.username }
-      sponsorsCount={count.isLoading ? '~' : count.data}
+      name={data.title}
+      title={"@" + data.username}
+      // sponsorsCount={count.isLoading ? "~" : count.data}
       actions={null}
       location={data.location}
     />
-  )
+  );
 }

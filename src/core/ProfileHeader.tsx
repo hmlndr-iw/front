@@ -8,7 +8,7 @@ export default function ProfileHeader(props: Props) {
   return (
     <div>
       <img
-        src={props.coverPicture || '/art/cover.png'}
+        src={props.coverPicture || "/art/cover.png"}
         alt="cover photo"
         className="h-56 w-full object-cover rounded-2xl"
       />
@@ -16,13 +16,13 @@ export default function ProfileHeader(props: Props) {
         <img
           src={
             props.profilePicture ||
-            'https://api.dicebear.com/5.x/lorelei-neutral/svg?seed=' +
+            "https://api.dicebear.com/5.x/lorelei-neutral/svg?seed=" +
               props.name +
-              '&radius=50'
+              "&radius=50"
           }
           alt="profile picture"
           className={`mx-auto sm:mx-[unset] ring-[5px] ring-background relative rounded-full -top-14 w-48 h-48 object-cover ${
-            !props.profilePicture && 'border'
+            !props.profilePicture && "border"
           }`}
         />
         <div className="flex-1 py-4 flex flex-col lg:flex-row justify-between space-y-3 sm:space-y-0">
@@ -31,20 +31,9 @@ export default function ProfileHeader(props: Props) {
               <div>
                 <h1 className="font-bold flex items-center space-x-2">
                   <span className="text-2xl">{props.name}</span>
-                  <span className="bg-secondary-400 text-white text-[10px] rounded-md p-1 uppercase">
-                    {props.role === 'user' ? 'Enterprise' : 'Sponsor'}
-                  </span>
                 </h1>
                 <h2 className="font-medium text-xs">{props.title}</h2>
               </div>
-              {props.role === 'sponsor' ? null : (
-                <div className="text-secondary-600 flex items-center space-x-1">
-                  <img src="/icons/sponsors.svg" alt="sponsors" />
-                  <span className="font-medium">
-                    {props.sponsorsCount || 0}
-                  </span>
-                </div>
-              )}
             </div>
           </div>
 
@@ -53,7 +42,7 @@ export default function ProfileHeader(props: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 interface Props {

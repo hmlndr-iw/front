@@ -12,5 +12,5 @@ export default function Protected({ children }: { children: React.ReactNode }) {
     return <>{children}</>
   }
 
-  return <Navigate to="/login" />
+  return <>{children}</>;
 }

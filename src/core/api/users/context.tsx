@@ -83,26 +83,26 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
 
-// export const useGetMe = () => useContext(UserContext)
+export const useGetMe = () => useContext(UserContext);
 
 
-export const useGetMe = () => {
-  return {
-    data:{
-      bio: "Best Chicken in the World!",
-      location: "Tunis, Tunisia",
-      coverPicture: "",
-      email: "contact@lospolloshermanos.tn",
-      fullname: "Los Pollos Hermanos",
-      id: "5f9f1b0b0b9b0c0017b0b1a5",
-      profilePicture: "https://wiki.minecartrapidtransit.net/images/8/85/POLLOS.jpg",
-      role: "user",
-      title: "Los Pollos Hermanos",
-      username: "lospolloshermanos",
-    },
-    loading: false,
-    isLoggedIn: true,
-    refetch: () => {},
-    logout: () => {},
-  }
-}
+// export const useGetMe = () => {
+//   return {
+//     data:{
+//       bio: "Best Chicken in the World!",
+//       location: "Tunis, Tunisia",
+//       coverPicture: "",
+//       email: "contact@lospolloshermanos.tn",
+//       fullname: "Los Pollos Hermanos",
+//       id: "5f9f1b0b0b9b0c0017b0b1a5",
+//       profilePicture: "https://wiki.minecartrapidtransit.net/images/8/85/POLLOS.jpg",
+//       role: "user",
+//       title: "Los Pollos Hermanos",
+//       username: "lospolloshermanos",
+//     },
+//     loading: false,
+//     isLoggedIn: true,
+//     refetch: () => {},
+//     logout: () => {},
+//   }
+// }

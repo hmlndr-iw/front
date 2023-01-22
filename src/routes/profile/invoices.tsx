@@ -15,47 +15,38 @@ import {
   Switch,
   Badge,
 } from '@mantine/core'
+import { useGetMyInvoices, useGetUnhanldedInvoices } from "~/core/api/users";
 
 function Row(row: DataFormat) {
   return (
-    <tr key={row.id}>
-      <td>{row.title}</td>
-      <td>{row.by}</td>
-
-      <td>{row.description}</td>
+    <tr key={row.ID}>
+      <td>{row.ID}</td>
+      <td>{row.Owner}</td>
+      <td>{row.ProductName}</td>
+      <td>{row.UnitPrice}</td>
+      <td>{row.Description}</td>
       <td>
         <Badge
           variant="gradient"
-          gradient={row.status=='complete' ? { from: 'teal', to: 'lime', deg: 105 } : { from: 'red', to: 'pink', deg: 105 }}
+          gradient={
+            row.Status == "Signed"
+              ? { from: "teal", to: "lime", deg: 105 }
+              : { from: "red", to: "pink", deg: 105 }
+          }
         >
-          {row.status}
+          {row.Status}
         </Badge>
       </td>
-      <td>
-        <Button className='px-0'>Print PDF</Button>
-      </td>
     </tr>
-  )
+  );
 }
 
-
 function Content() {
-  const data = [
-    {
-      id: 1,
-      title: '12020019',
-      description: 'Invoice for the month of January',
-      status: 'complete',
-      by: '10000 Articles',
-    },
-    {
-      id: 2,
-      title: '12020020',
-      description: 'Invoice for the month of February',
-      status: 'pending',
-      by: '10000 Articles',
-    }
-  ]
+  const x = useGetMyInvoices();
+
+  if (x.isLoading) return <div>Loading...</div>;
+
+  const { data } = x;
 
   return (
     <div className="py-10">
@@ -71,13 +62,13 @@ function Content() {
                 p="xl"
                 withBorder
                 sx={{
-                  background: 'white',
-                  '@media (max-width: 755px)': {
-                    width: '100%',
-                    margin: '0 auto',
+                  background: "white",
+                  "@media (max-width: 755px)": {
+                    width: "100%",
+                    margin: "0 auto",
                   },
-                  marginRight: '40px',
-                  marginLeft: '40px',
+                  marginRight: "40px",
+                  marginLeft: "40px",
                   zIndex: 2,
                 }}
               >
@@ -89,10 +80,9 @@ function Content() {
                         <th>Issuer</th>
                         <th>Description</th>
                         <th>Status</th>
-                        <th>Actions</th>
                       </tr>
                     </thead>
-                    <tbody>{data && data.map(row => <Row {...row} />)}</tbody>
+                    <tbody>{data && data.map((row) => <Row {...row} />)}</tbody>
                   </Table>
                 </ScrollArea>
               </Paper>
@@ -101,7 +91,7 @@ function Content() {
         </div>
       </Container>
     </div>
-  )
+  );
 }
 export default function Gallery() {
   return (

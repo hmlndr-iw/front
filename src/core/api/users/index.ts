@@ -15,30 +15,28 @@ export const useSignup = () => {
 }
 
 export const useLogin = () => {
-  const push = useNavigate()
-  const me = useGetMe()
+  const push = useNavigate();
   const mutation = useMutation(api.login, {
-    onSuccess: data => {
-      localStorage.setItem('token', data.token)
-      me.refetch()
-      push('/profile/settings')
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      push("/profile");
     },
-  })
-  return mutation
-}
+  });
+  return mutation;
+};
 
 // export const useGetMe = () => {
-//   const [redo, setRedo] = useState(true)
-//   return useQuery('me', api.getMe, {
+//   const [redo, setRedo] = useState(true);
+//   return useQuery("me", api.getMe, {
 //     onError: () => {
 //       // localStorage.removeItem('token')
-//       setRedo(!redo)
+//       setRedo(!redo);
 //     },
 //     retry: redo,
 //     // refetchOnWindowFocus: false,
 //     // refetchOnMount: false,
-//   })
-// }
+//   });
+// };
 
 export const useUpdateMe = () => {
   const me = useGetMe()
@@ -50,11 +48,39 @@ export const useUpdateMe = () => {
   return mutation
 }
 
+export const useCreateInvoice = () => {
+  const push = useNavigate();
+  const mutation = useMutation(api.createInvoice, {
+    onSuccess: () => {
+      push("/profile/invoices");
+    },
+  });
+  return mutation;
+};
+
+export const useSignInvoice = () => {
+  const push = useNavigate();
+  const mutation = useMutation(api.signInvoice, {
+    onSuccess: () => {
+      push("/profile/invoices");
+    },
+  });
+  return mutation;
+};
+
 export const useGetAllUsers = () => {
   return useQuery('users', api.getAllUsers)
 }
 
-export const useGetUser = () => {
-  const { id } = useParams()
-  return useQuery(['user', id], () => api.getUser(id || ''))
-}
+export const useGetUnhanldedInvoices = () => {
+  return useQuery("unhandled", api.unhandled);
+};
+
+export const useGetMyInvoices = () => {
+  return useQuery("my-invoices", api.myInvoices);
+};
+
+// export const useGetUser = () => {
+//   const { id } = useParams()
+//   return useQuery(['user', id], () => api.getUser(id || ''))
+// }

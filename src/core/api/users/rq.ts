@@ -6,14 +6,34 @@ export const signup = async (user: any) => {
 }
 
 export const login = async (user: any) => {
-  const response = await getApi().post('/user/login', user)
-  return response.data
-}
+  const response = await getApi().post("/login", user);
+  return response.data;
+};
 
 export const getMe = async () => {
-  const response = await getApi().get('/user/me')
-  return response.data
-}
+  const response = await getApi().get("/me");
+  return response.data;
+};
+
+export const unhandled = async () => {
+  const response = await getApi().get("/invoice/unhandled");
+  return response.data;
+};
+
+export const myInvoices = async () => {
+  const response = await getApi().get("/invoice/done");
+  return response.data;
+};
+
+export const createInvoice = async (data: any) => {
+  const response = await getApi().post("/invoice", data);
+  return response.data;
+};
+
+export const signInvoice = async (id: string) => {
+  const response = await getApi().put("/invoice/sign/" + id);
+  return response.data;
+};
 
 export const updateMe = async (user: any) => {
   const formData = new FormData()
