@@ -10,6 +10,7 @@ import Protected from '~/Protected'
 function Content() {
   const { data } = useGetMe()
 
+  if (!data) return <></>;
   return (
     <div className="py-10">
       <Container className="grid grid-cols-2 gap-10">
@@ -17,14 +18,12 @@ function Content() {
           <MyProfileHeader />
           <ProfileNavigation />
           <div className="px-2 sm:px-6 py-6">
-            {data.bio ? data.bio : 'No bio'}
+            {data && data.bio ? data.bio : "No bio"}
           </div>
         </div>
-
-        
       </Container>
     </div>
-  )
+  );
 }
 
 export default function Index() {

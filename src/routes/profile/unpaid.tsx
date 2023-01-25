@@ -61,14 +61,9 @@ function Row(row: DataFormat) {
                   </li>
 
                   <li className="payment-method bankslip">
-                    <input
-                      onClick={() => mutate(row.ID)}
-                      name="payment_methods"
-                      type="radio"
-                      id="bankslip"
-                      disabled={isLoading}
-                    />
-                    <label htmlFor="bankslip">Stripe</label>
+                    <a href={row.Url} target="_blank" rel="noopener noreferrer">
+                      <label>Stripe</label>
+                    </a>
                   </li>
                 </ul>
               </div>
