@@ -8,7 +8,7 @@ export default function ProfileHeader(props: Props) {
   return (
     <div>
       <img
-        src={props.coverPicture || "/art/cover.png"}
+        src={props.coverPicture || "/art/cover.jpg"}
         alt="cover photo"
         className="h-56 w-full object-cover rounded-2xl"
       />
