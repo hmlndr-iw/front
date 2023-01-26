@@ -16,8 +16,8 @@ export default function Navbar() {
         <div className="hidden lg:flex lg:items-center lg:space-x-2">
           <Button thin>Home</Button>
           <Button thin>About</Button>
-          <Button thin>Refer Us</Button>
           <Button thin>Contact Us</Button>
+          <Button href="/profile" thin>Dashboard</Button>
         </div>
         <div className="hidden lg:grid grid-cols-2 gap-1">
           {me.data ? (
