@@ -1,4 +1,3 @@
-import { useCountSponsors } from './api/sponsor'
 import { useGetMe } from './api/users/context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
